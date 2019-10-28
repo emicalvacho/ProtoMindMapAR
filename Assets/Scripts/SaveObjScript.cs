@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class SaveObjScript : MonoBehaviour
 {
-    private GameObject obj;
+    private GameObject objSelect;
+    private GameObject objCollider;
+
+    public GameObject ObjSelect { get => objSelect; set => objSelect = value; }
+    public GameObject ObjCollider { get => objCollider; set => objCollider = value; }
 
     void OnEnable() {
         SelectScript.OnObject += HandlerOnObject;
+        DetectCollisionScript.OnColl += HandlerOnCollider;
     }   
 
     void OnDisable() {
         SelectScript.OnObject -= HandlerOnObject;
+        DetectCollisionScript.OnColl -= HandlerOnCollider;
     }
 
     void HandlerOnObject(GameObject obj){
-        Debug.Log("NOMBRE DEL OBJETO SETEADO: " + obj.name);
-        this.obj = obj;
+        Debug.Log("OBJETO SELECCIONADO: " + obj.name);
+        ObjSelect = obj;
     }
 
-    public GameObject getObject(){
-        return obj;
+    void HandlerOnCollider(GameObject obj){
+        Debug.Log("OBJETO COLISIONADOR: " + obj.name);
+        ObjCollider = obj;
     }
 }

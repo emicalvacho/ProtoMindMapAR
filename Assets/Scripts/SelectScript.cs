@@ -8,7 +8,7 @@ public class SelectScript : MonoBehaviour
     public GameObject cube;
     private GameObject findObj;
 
-    public delegate void _OnObject (GameObject str);
+    public delegate void _OnObject (GameObject obj);
     public static event _OnObject OnObject;
 
     private bool band;

@@ -10,11 +10,11 @@ public class EventScript : MonoBehaviour
     public SpawnScript spawnScript;
 
     public bool InitObject(){
-        if (saveObjScript.getObject()==null){
+        if (saveObjScript.ObjSelect==null){
             return false;
         }
-        Debug.Log("OBJETO A ACCIONAR ES: " + saveObjScript.getObject().name);
-        obj = saveObjScript.getObject();
+        Debug.Log("OBJETO A ACCIONAR ES: " + saveObjScript.ObjSelect.name);
+        obj = saveObjScript.ObjSelect;
         return true;
     }
     
@@ -31,8 +31,13 @@ public class EventScript : MonoBehaviour
     public void RemoveObj(){
         if(InitObject()){
             InitObject();
-            Destroy(obj);
-            spawnScript.ContObj --;
+            if(obj.name == "Cube 1"){
+                Debug.Log("No se puede eliminar el nodo principal");
+            }
+            else{
+                Destroy(obj);
+                spawnScript.ContObj --;
+            }
         }
         else{
             Debug.Log("No se ha seleccionado ningun objeto para eliminar.");

@@ -243,6 +243,7 @@ MonoBehaviour:
   mTotalObjetos: 10
   inicio: 1
   posInicial: 1
+  saveObj: {fileID: 2088258139}
 --- !u!1 &313303734
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +435,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &855554721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5234520492597630143, guid: 62350f176b8e95e45b427d713e12658b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5234520494106278468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &855554726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855554721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836ddb750bf4edc439eb8a85821be30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 855554721}
 --- !u!21 &1071342648
 Material:
   serializedVersion: 6
