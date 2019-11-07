@@ -7,24 +7,24 @@ public class SpawnScript : MonoBehaviour {
     public int mTotalObjetos = 10;
     private GameObject[] mObjs;
     private int contObj;
-    public int ContObj{get;set;}
     public bool inicio = false;
     public bool posInicial = true;
 
     public SaveObjScript saveObj;
+    public DrawLineScript drawLine;
+
+    public int ContObj { get => contObj; set => contObj = value; }
 
     void Start () {
         mObjs = new GameObject[ mTotalObjetos ];
-        contObj = 0;
+        ContObj = 0;
         if(inicio){
             Spawn();
         }
     }
     
     private GameObject SpawnElement() 
-    {
-        bool selectObj = false;
-        
+    {        
         if(inicio){
             inicio = false;
             return confObj();
@@ -57,6 +57,14 @@ public class SpawnScript : MonoBehaviour {
          
         ContObj ++;
         objInstanciado.name = "Cube " + ContObj;
+
+        if(objInstanciado.name == "Cube 1"){
+            Debug.Log("El primer nodo no tiene padre");
+        }
+        else{
+            drawLine.DrawLine(objInstanciado.transform.parent.gameObject, objInstanciado);
+            Debug.Log("Objeto instanciado tiene padre? " + objInstanciado.transform.parent.gameObject.name);
+        }
         
         return objInstanciado;
     }
@@ -66,7 +74,7 @@ public class SpawnScript : MonoBehaviour {
             Debug.Log("No se puede instanciar mas objetos");
         }
         else{
-            SpawnElement();    
+            SpawnElement(); 
         }
     }
 }
