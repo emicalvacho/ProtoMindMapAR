@@ -7,13 +7,17 @@ public class DrawLineScript : MonoBehaviour
     public GameObject obj;
 
     public void DrawLine(GameObject parent, GameObject child){
-        GameObject newLineGen = Instantiate(obj);   
-        newLineGen.transform.SetParent(GameObject.Find("SpawnerLine").transform);
-        LineRenderer line = newLineGen.GetComponent<LineRenderer>();
+        if(parent.name != "Spawner"){
+            GameObject newLineGen = Instantiate(obj);   
+            newLineGen.transform.SetParent(GameObject.Find(parent.name).transform);
+            LineRenderer line = newLineGen.GetComponent<LineRenderer>();
 
-        line.positionCount = 2;
-        line.SetPosition(0, parent.transform.position);
-        line.SetPosition(1, child.transform.position);
+            line.name = "Line " + parent.name + " - " + child.name;
+
+            line.positionCount = 2;
+            line.SetPosition(0, parent.transform.position);
+            line.SetPosition(1, child.transform.position); 
+        }   
     }
 }
 

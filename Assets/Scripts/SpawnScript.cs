@@ -56,9 +56,9 @@ public class SpawnScript : MonoBehaviour {
         }
          
         ContObj ++;
-        objInstanciado.name = "Cube " + ContObj;
+        objInstanciado.name = "Nodo " + ContObj;
 
-        if(objInstanciado.name == "Cube 1"){
+        if(objInstanciado.name == "nodo 1"){
             Debug.Log("El primer nodo no tiene padre");
         }
         else{

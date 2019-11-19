@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class SelectScript : MonoBehaviour
 {
-    public GameObject cube;
+    public GameObject nodo;
     private GameObject findObj;
 
     public delegate void _OnObject (GameObject obj);
@@ -27,7 +27,7 @@ public class SelectScript : MonoBehaviour
             } 
         }
         if(OnObject != null)
-            OnObject(cube);
+            OnObject(nodo);
     }
 
     private GameObject FindInactiveObject(string findObj){

@@ -38,6 +38,5 @@ public class SaveObjScript : MonoBehaviour
     void HandlerOnLine(GameObject obj){
         Debug.Log("OBJETO MOVIDO: " + obj.name);
         ObjLine = obj;
-        
     }
 }

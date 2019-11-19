@@ -31,7 +31,7 @@ public class EventScript : MonoBehaviour
     public void RemoveObj(){
         if(InitObject()){
             InitObject();
-            if(obj.name == "Cube 1"){
+            if(obj.name == "Nodo 1"){
                 Debug.Log("No se puede eliminar el nodo principal");
             }
             else{

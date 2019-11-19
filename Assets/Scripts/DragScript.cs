@@ -7,7 +7,7 @@ public class DragScript : MonoBehaviour
     private Vector3 mOffset;
     private float mZCoord;
     
-    public GameObject cube;
+    public GameObject nodo;
     public delegate void _OnLine(GameObject obj);
     public static event _OnLine OnLine;
 
@@ -32,7 +32,5 @@ public class DragScript : MonoBehaviour
     void OnMouseDrag()
     {
         transform.position = GetMouseAsWorldPoint() + mOffset;
-        if(OnLine != null)
-            OnLine(cube);
     } 
 }
