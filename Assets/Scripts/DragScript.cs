@@ -8,8 +8,6 @@ public class DragScript : MonoBehaviour
     private float mZCoord;
     
     public GameObject nodo;
-    public delegate void _OnLine(GameObject obj);
-    public static event _OnLine OnLine;
 
     void OnMouseDown()
     {

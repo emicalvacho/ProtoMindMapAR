@@ -12,7 +12,7 @@ public class DrawLineScript : MonoBehaviour
             newLineGen.transform.SetParent(GameObject.Find(parent.name).transform);
             LineRenderer line = newLineGen.GetComponent<LineRenderer>();
 
-            line.name = "Line " + parent.name + " - " + child.name;
+            line.name = "Line " + child.name;
 
             line.positionCount = 2;
             line.SetPosition(0, parent.transform.position);
