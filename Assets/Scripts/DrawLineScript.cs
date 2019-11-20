@@ -4,22 +4,58 @@ using UnityEngine;
 
 public class DrawLineScript : MonoBehaviour
 {
-    public GameObject obj;
+    // Make this directly of type UpdateLineRenderer
+    // this way you don't need GetComponent later
+    public UpdateLineScript prefab;
 
-    public void DrawLine(GameObject parent, GameObject child){
-        if(parent.name != "Spawner"){
-            GameObject newLineGen = Instantiate(obj);   
-            newLineGen.transform.SetParent(GameObject.Find(parent.name).transform);
-            LineRenderer line = newLineGen.GetComponent<LineRenderer>();
+    public void DrawLine(GameObject parent, GameObject child)
+    {
+        if(parent.name == "Spawner") return;
 
-            line.name = "Line " + child.name;
+        var newLine = Instantiate(prefab, parent.transform);   
 
-            line.positionCount = 2;
-            line.SetPosition(0, parent.transform.position);
-            line.SetPosition(1, child.transform.position); 
-        }   
+        // Here you pass in all required information
+        newLine.Initialize(parent.transform, child.transform, "Line " + child.name);
     }
 }
+
+// public class DrawLineScript : MonoBehaviour
+// {
+//     // Make this directly of type UpdateLineRenderer
+//     // this way you don't need GetComponent later
+//     public GameObject obj;
+//     public UpdateLineScript newLine;
+
+//     public void DrawLine(GameObject parent, GameObject child)
+//     {
+//         if(parent.name == "Spawner") return;
+
+//         GameObject newLineGen = Instantiate(obj,parent.transform);   
+//         LineRenderer line = newLineGen.GetComponent<LineRenderer>();
+
+//         // Here you pass in all required information
+//         newLine.Initialize(parent.transform, child.transform, "Line " + child.name);
+//     }
+// }
+
+// public class DrawLineScript : MonoBehaviour
+// {
+//     public GameObject obj;
+
+//     public void DrawLine(GameObject parent, GameObject child){
+//         if(parent.name != "Spawner"){
+//             GameObject newLineGen = Instantiate(obj);   
+//             newLineGen.transform.SetParent(GameObject.Find(parent.name).transform);
+//             LineRenderer line = newLineGen.GetComponent<LineRenderer>();
+
+//             line.name = "Line " + child.name;
+
+//             line.positionCount = 2;
+//             line.SetPosition(0, parent.transform.position);
+//             line.SetPosition(1, child.transform.position); 
+//         }   
+//     }
+// }
 
 //     private void SpawnLineGenerator(Vector3[] linePoints)
 //     {

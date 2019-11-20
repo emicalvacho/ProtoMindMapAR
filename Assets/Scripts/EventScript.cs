@@ -35,8 +35,15 @@ public class EventScript : MonoBehaviour
                 Debug.Log("No se puede eliminar el nodo principal");
             }
             else{
-                Destroy(obj);
-                spawnScript.ContObj --;
+                // Debug.Log("Cantidad de hijos de " + obj.name+": " + obj.transform.childCount);
+                if(obj.transform.childCount != 0){
+                    Debug.Log("No se puede eliminar este nodo porque tiene hijos");
+                }
+                else{
+                    Destroy(GameObject.Find("Line "+obj.name));
+                    Destroy(obj);
+                    spawnScript.ContObj --;
+                }
             }
         }
         else{
