@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Este script va dentro de cada Spawner y de los botones del
+    Canvas, para poder disparar los eventos necesarios y realizar
+    las acciones de Agregar, Eliminar y Pintar por el momento
+*/
+
 public class EventScript : MonoBehaviour
 {
-    private GameObject obj;
+    private GameObject obj; // objeto aux
 
-    public SaveObjScript saveObjScript;
+    // Es el script que me va a permitir actuar sobre los nodos seleccionados
+    public SaveObjScript saveObjScript; 
+    // Es el script que me va a permitir agregar nodos nuevos
     public SpawnScript spawnScript;
 
+    /* Trae el objeto seleccionado para que sea usado por los otros
+    eventos */
     public bool InitObject(){
         if (saveObjScript.ObjSelect==null){
             return false;
@@ -18,6 +28,7 @@ public class EventScript : MonoBehaviour
         return true;
     }
     
+    // Cambia el color del objeto seleccionado desde el Boton Add 
     public void ChangeColor(){
         if(InitObject()){
             Renderer rend = obj.GetComponent<Renderer>();
@@ -28,6 +39,7 @@ public class EventScript : MonoBehaviour
         }
     }
 
+    // Elimina el objeto seleccionado desde el Boton Remove
     public void RemoveObj(){
         if(InitObject()){
             InitObject();
@@ -41,8 +53,8 @@ public class EventScript : MonoBehaviour
                 }
                 else{
                     Destroy(GameObject.Find("Line "+obj.name));
-                    Destroy(obj);
-                    spawnScript.ContObj --;
+                    Destroy(obj); // Destruye objetos en Unity
+                    spawnScript.ContObj --; // Quito en uno la cantidad de objetos instanciados
                 }
             }
         }
